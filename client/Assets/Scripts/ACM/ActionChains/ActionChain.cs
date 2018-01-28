@@ -37,7 +37,7 @@ namespace EXBoardGame.ActionChainModel
 		protected CompositeDisposable _disposables = new CompositeDisposable();
 		protected LinkedList<ActionInfo> _chain = new LinkedList<ActionInfo>();
 
-		public abstract IEnumerable<Action> TryAppend(Action actionToAppend);
+		public abstract void TryAppend(GameAction actionToAppend);
 
 		public void Dispose() => _disposables.Dispose();
 	}

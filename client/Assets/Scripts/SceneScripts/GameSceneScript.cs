@@ -20,14 +20,19 @@ namespace tichu2018
 		private GameCore _gameCore { get; set; }
 		private ActionChain _actionChain { get; set; }
 		private GameView _gameView { get; set; }
+		private GameConroller _gameController { get; set; }
 
 		public void Awake()
 		{
 			// TODO(sorae): GameType에 맞는 Chain 생성. 일단 무조건 local로..
 			_actionChain = new LocalActionChain();
 			_gameCore = new TichuCore();
+			_gameView = new TichuView();
+			_gameController = new TichuController();
+
 			_gameCore.Initialize(_actionChain);
-			_gameCore.onGameEvent += _gameView.OnGameEvent;
+			_gameCore.onGameEvent += _gameView.ApplyGameEvent;
+			_gameController.onPlayerAction += _actionChain.TryAppend;
 		}
 	}
 }

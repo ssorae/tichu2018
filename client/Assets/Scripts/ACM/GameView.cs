@@ -2,6 +2,6 @@
 {
 	public abstract class GameView
 	{
-		public abstract void OnGameEvent(GameEvent @event);
+		public abstract void ApplyGameEvent(GameEvent @event);
 	}
 }
