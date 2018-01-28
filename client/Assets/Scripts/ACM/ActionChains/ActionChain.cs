@@ -6,7 +6,7 @@ namespace EXBoardGame.ActionChainModel
 {
 	public abstract class ActionChain : IDisposable
 	{
-		public Random random { get; private set; } = null;
+		public Random random { get; protected set; } = null;
 
 		public IEnumerable<ActionInfo> AsEnumerable()
 		{

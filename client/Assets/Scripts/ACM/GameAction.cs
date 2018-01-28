@@ -7,7 +7,7 @@
 
 	public sealed class ActionInfo
 	{
-		public ActionInfo(GameAction action, uint timeStamp)
+		public ActionInfo(GameAction action, int timeStamp)
 		{
 			this.action = action;
 			this.timeStamp = timeStamp;
@@ -15,6 +15,6 @@
 		private ActionInfo() { }
 
 		public GameAction action { get; private set; }
-		public uint timeStamp { get; private set; }
+		public int timeStamp { get; private set; }
 	}
 }

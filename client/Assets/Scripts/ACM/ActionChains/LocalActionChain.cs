@@ -1,14 +1,18 @@
 ﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace EXBoardGame.ActionChainModel
 {
 	public class LocalActionChain : ActionChain
 	{
-		public override void TryAppend(GameAction actionToAppend)
+		public LocalActionChain()
 		{
-			// TODO(sorae): impl..
-			throw new NotImplementedException();
+			this.random = new System.Random();
 		}
+
+		public override void TryAppend(GameAction actionToAppend)
+			=> _chain.AddLast(
+				new ActionInfo(actionToAppend, Mathf.FloorToInt(Time.time)));
 	}
 }

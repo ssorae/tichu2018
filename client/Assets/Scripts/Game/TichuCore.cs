@@ -20,7 +20,7 @@ namespace tichu2018
 			// TODO(sorae): impl..
 		}
 
-		private uint _lastTimeStamp = 0u;
+		private int _lastTimeStamp = 0;
 		
 		protected override void _applyActionInfo(ActionInfo givenInfo)
 		{
@@ -49,7 +49,7 @@ namespace tichu2018
 		private List<TichuPlayer> _players = new List<TichuPlayer>
 		{
 			// NOTE(sorae): 일단 플레이어 없음을 null로 해보자.. 문제 없겠지
-			null,null,null,null
+			null, null, null, null
 		};
 
 		private void _applyAction_WaitForStart(ActionInfo givenInfo)
