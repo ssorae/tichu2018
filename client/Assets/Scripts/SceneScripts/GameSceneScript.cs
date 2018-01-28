@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using EXBoardGame.ActionChainModel;
+﻿using EXBoardGame.ActionChainModel;
 using UnityEngine;
 
 namespace tichu2018
