@@ -2,6 +2,7 @@
 {
 	public abstract class GameAction
 	{
+		public int playerIndex;
 	}
 
 	public sealed class ActionInfo
