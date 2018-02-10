@@ -1,8 +1,15 @@
-﻿namespace EXBoardGame.ActionChainModel
+﻿using UnityEngine;
+
+namespace EXBoardGame.ActionChainModel
 {
 	public abstract class GameAction
 	{
 		public int playerIndex;
+
+		public override string ToString()
+		{
+			return JsonUtility.ToJson(this);
+		}
 	}
 
 	public sealed class ActionInfo

@@ -7,7 +7,15 @@ namespace EXBoardGame.ActionChainModel
 	public abstract class ActionChain : IDisposable
 	{
 #if UNITY_EDITOR
-		public static List<ActionChain> AllChains = new List<ActionChain>();
+		public static List<ActionChain> AllChains
+		{
+			get
+			{
+				_allChains.RemoveAll(chain => chain.isDisposed);
+				return _allChains;
+			}
+		}
+		private static List<ActionChain> _allChains = new List<ActionChain>();
 #endif
 
 		public ActionChain()

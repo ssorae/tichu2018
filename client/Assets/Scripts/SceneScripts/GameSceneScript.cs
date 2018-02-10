@@ -1,4 +1,5 @@
 ﻿using EXBoardGame.ActionChainModel;
+using UniRx;
 using UnityEngine;
 
 namespace tichu2018
@@ -20,17 +21,26 @@ namespace tichu2018
 		private GameView _gameView { get; set; }
 		private GameConroller _gameController { get; set; }
 
+		private CompositeDisposable _disposables = new CompositeDisposable();
+
 		public void Awake()
 		{
 			// TODO(sorae): GameType에 맞는 Chain 생성. 일단 무조건 local로..
 			_actionChain = new LocalActionChain();
+			_disposables.Add(_actionChain);
 			_gameCore = new TichuCore();
+			_disposables.Add(_gameCore);
 			_gameView = new TichuView();
 			_gameController = new TichuController();
 
 			_gameCore.Initialize(_actionChain);
 			_gameCore.onGameEvent += _gameView.ApplyGameEvent;
 			_gameController.onPlayerAction += _actionChain.TryAppendFromClient;
+		}
+
+		private void OnDestroy()
+		{
+			_disposables.Dispose();
 		}
 	}
 }
