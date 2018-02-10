@@ -3,7 +3,8 @@ using System.Collections;
 
 namespace EXBoardGame.ActionChainModel
 {
-	public abstract class GameCore
+	// TODO(sorae): 추후 Update()가 필요해지면 추가
+	public abstract class GameCore : IDisposable
 	{
 		protected ActionChain _chain { get; private set; }
 		protected abstract void _applyActionInfo(ActionInfo givenInfo);
@@ -11,34 +12,21 @@ namespace EXBoardGame.ActionChainModel
 		public bool isInitialized { get; private set; }
 		public void Initialize(ActionChain chainToUse)
 		{
-			this._chain = chainToUse;
+			_chain = chainToUse;
+			_chain.OnNewActionAppended += this._applyActionInfo;
 			_initialize();
 			this.isInitialized = true;
 		}
 		protected abstract void _initialize();
 
+		public virtual void Dispose()
+		{
+			_chain.OnNewActionAppended -= this._applyActionInfo;
+		}
+
 		public event Action<GameEvent> onGameEvent = delegate{};
 
-		protected void _invokeGameEvent(GameEvent @event)
+		protected void _publishGameEvent(GameEvent @event)
 			=> onGameEvent.Invoke(@event);
-
-		public IEnumerator GameRoutine()
-		{
-			if(false == this.isInitialized)
-			{
-				// TODO(sorae): log error
-				yield break;
-			}
-			foreach(var newAction in _chain.AsEnumerable())
-			{
-				if(newAction == null)
-				{
-					yield return null;
-					continue;
-				}
-
-				this._applyActionInfo(newAction);
-			}
-		}
 	}
 }

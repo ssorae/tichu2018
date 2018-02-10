@@ -30,9 +30,7 @@ namespace tichu2018
 
 			_gameCore.Initialize(_actionChain);
 			_gameCore.onGameEvent += _gameView.ApplyGameEvent;
-			_gameController.onPlayerAction += _actionChain.TryAppend;
-
-			StartCoroutine(_gameCore.GameRoutine());
+			_gameController.onPlayerAction += _actionChain.TryAppendFromClient;
 		}
 	}
 }

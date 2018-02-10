@@ -70,13 +70,13 @@ namespace tichu2018
 				var player = _players[readyAction.playerIndex];
 				Debug.Assert(player != null);
 				player.isReady = readyAction.isReady;
-				_invokeGameEvent(readyAction.ToGameEvent());
+				_publishGameEvent(readyAction.ToGameEvent());
 
 				if (_players.TrueForAll(
 					eachPlayer => eachPlayer != null && eachPlayer.isReady))
 				{
 					_currentPhase = TichuPhase.kFirstHandout;
-					_invokeGameEvent(new EvtPhaseChanged(_currentPhase));
+					_publishGameEvent(new EvtPhaseChanged(_currentPhase));
 				}
 			};
 			#endregion

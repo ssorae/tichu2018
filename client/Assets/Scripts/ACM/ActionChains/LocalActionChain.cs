@@ -11,8 +11,7 @@ namespace EXBoardGame.ActionChainModel
 			this.random = new System.Random();
 		}
 
-		public override void TryAppend(GameAction actionToAppend)
-			=> _chain.AddLast(
-				new ActionInfo(actionToAppend, Mathf.FloorToInt(Time.time)));
+		public override void TryAppendFromClient(GameAction actionToAppend)
+			=> _onAppendSucceed(new ActionInfo(actionToAppend, Mathf.FloorToInt(Time.time)));
 	}
 }
