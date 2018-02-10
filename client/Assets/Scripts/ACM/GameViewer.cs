@@ -1,6 +1,6 @@
 ﻿namespace EXBoardGame.ActionChainModel
 {
-	public abstract class GameView
+	public abstract class GameViewer
 	{
 		public abstract void ApplyGameEvent(GameEvent @event);
 	}

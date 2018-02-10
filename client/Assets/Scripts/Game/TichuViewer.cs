@@ -3,7 +3,7 @@ using EXBoardGame.ActionChainModel;
 
 namespace tichu2018
 {
-	public class TichuView : GameView
+	public class TichuViewer : GameViewer
 	{
 		public override void ApplyGameEvent(GameEvent @event)
 		{

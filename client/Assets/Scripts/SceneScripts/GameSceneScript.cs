@@ -18,7 +18,7 @@ namespace tichu2018
 
 		private GameCore _gameCore { get; set; }
 		private ActionChain _actionChain { get; set; }
-		private GameView _gameView { get; set; }
+		private GameViewer _gameView { get; set; }
 		private GameConroller _gameController { get; set; }
 
 		private CompositeDisposable _disposables = new CompositeDisposable();
@@ -30,7 +30,7 @@ namespace tichu2018
 			_disposables.Add(_actionChain);
 			_gameCore = new TichuCore();
 			_disposables.Add(_gameCore);
-			_gameView = new TichuView();
+			_gameView = new TichuViewer();
 			_gameController = new TichuController();
 
 			_gameCore.Initialize(_actionChain);
