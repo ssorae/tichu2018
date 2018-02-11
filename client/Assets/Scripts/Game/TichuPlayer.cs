@@ -8,6 +8,7 @@ namespace tichu2018
 {
 	public class TichuPlayer
 	{
+		public string name { get; set; } = string.Empty;
 		public bool isReady { get; set; } = false;
 	}
 }

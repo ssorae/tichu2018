@@ -153,7 +153,11 @@ namespace EXBoardGame.ActionChainModel.Editor
 				var json = "{";
 				foreach(var eachField in typeNameAndValues)
 				{
-					json += $"\"{eachField.Key}\":\"{eachField.Value}\",";
+					var valueString = 
+						eachField.Value == "true" 
+						|| eachField.Value == "false" 
+						? eachField.Value : $"\"{eachField.Value}\"";
+					json += $"\"{eachField.Key}\":{valueString},";
 				}
 				// remove last char ','
 				json = json.Remove(json.Length - 1);

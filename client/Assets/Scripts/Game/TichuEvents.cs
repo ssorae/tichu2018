@@ -2,13 +2,19 @@
 
 namespace tichu2018
 {
-	public class EvtPlayerReady : GameEvent
+	public struct EvtPlayerJoined : IGameEvent
+	{
+		public int playerIndex;
+		public string nickName;
+	}
+
+	public struct EvtPlayerReady : IGameEvent
 	{
 		public int playerIndex;
 		public bool isReady;
 	}
 
-	public class EvtPhaseChanged : GameEvent
+	public struct EvtPhaseChanged : IGameEvent
 	{
 		public TichuPhase targetPhase;
 
@@ -21,11 +27,21 @@ namespace tichu2018
 
 	public static class TichuEventExtensions
 	{
+		public static EvtPlayerJoined ToGameEvent(this ActPlayerJoined me)
+		{
+			return new EvtPlayerJoined
+			{
+				playerIndex = me.playerIndex,
+				nickName = me.playerName,
+			};
+		}
+
 		public static EvtPlayerReady ToGameEvent(this ActPlayerReady me)
 		{
 			return new EvtPlayerReady
 			{
-				isReady = me.isReady, playerIndex = me.playerIndex
+				isReady = me.isReady,
+				playerIndex = me.playerIndex,
 			};
 		}
 	}

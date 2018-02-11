@@ -24,9 +24,9 @@ namespace EXBoardGame.ActionChainModel
 			_chain.OnNewActionAppended -= this._applyActionInfo;
 		}
 
-		public event Action<GameEvent> onGameEvent = delegate{};
+		public event Action<IGameEvent> onGameEvent = delegate{};
 
-		protected void _publishGameEvent(GameEvent @event)
+		protected void _publishGameEvent(IGameEvent @event)
 			=> onGameEvent.Invoke(@event);
 	}
 }

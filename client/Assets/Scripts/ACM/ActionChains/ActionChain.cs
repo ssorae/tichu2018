@@ -60,5 +60,7 @@ namespace EXBoardGame.ActionChainModel
 		}
 
 		public void Dispose() => _disposables.Dispose();
+
+		public int? myClientIndex { get; protected set; }
 	}
 }

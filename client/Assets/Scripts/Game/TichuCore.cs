@@ -62,7 +62,14 @@ namespace tichu2018
 			#region task definitions..
 			Action<ActPlayerJoined> handleJoin = joinedAction =>
 			{
-				// TODO(sorae): impl..
+				Debug.Assert(_players[joinedAction.playerIndex] == null);
+				var newPlayer = new TichuPlayer
+				{
+					name = joinedAction.playerName
+				};
+
+				_players[joinedAction.playerIndex] = newPlayer;
+				_publishGameEvent(joinedAction.ToGameEvent());
 			};
 
 			Action<ActPlayerReady> handleReady = readyAction =>

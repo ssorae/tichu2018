@@ -29,7 +29,7 @@ namespace tichu2018
 
 			DataContainer.instance.myNickname = nicknameInput;
 
-			SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+			SceneManager.LoadScene(GameSceneScript.GAME_SCENE_NAME, LoadSceneMode.Single);
 		}
 		
 	}
