@@ -30,7 +30,8 @@ namespace tichu2018
 			_disposables.Add(_actionChain);
 			_gameCore = new TichuCore();
 			_disposables.Add(_gameCore);
-			_gameView = new TichuViewer();
+			//_gameView = new TichuViewer();
+			_gameView = new DevTichuViewer();
 			_gameController = new TichuController();
 
 			_gameCore.Initialize(_actionChain);
@@ -38,7 +39,7 @@ namespace tichu2018
 			_gameController.onPlayerAction += _actionChain.TryAppendFromClient;
 		}
 
-		private void OnDestroy()
+		public void OnDestroy()
 		{
 			_disposables.Dispose();
 		}
